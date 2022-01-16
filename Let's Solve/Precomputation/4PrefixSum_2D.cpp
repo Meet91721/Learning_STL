@@ -78,7 +78,7 @@ int main()
     {
         int a, b, c, d;
         cin >> a >> b >> c >> d;
-        cout << (pf[c][d] - pf[a - 1][d] - pf[c][b - 1]) << endl;
+        cout << (pf[c][d] - pf[a - 1][d] - pf[c][b - 1] + pf[a - 1][b - 1]) << endl;
     }
     // O(N^2) + O(Q) ~ 10^6
 }
