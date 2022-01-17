@@ -1,4 +1,4 @@
-// https://www.codechef.com/problems/CHEFPRMS
+// https://www.hackerrank.com/challenges/crush/problem
 #include <bits/stdc++.h>
 
 using namespace std;
