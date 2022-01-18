@@ -3,6 +3,7 @@
 
 using namespace std;
 
+int arr[26][100001];
 int main()
 {
     /*
@@ -40,52 +41,36 @@ int main()
         }
         //O(q*(s.length()))
     */
-    long q;
+    int q;
     cin >> q;
-    // string *s = (string *) malloc (sizeof(char) * (int) pow(10, 100));
     string s;
-    scanf("%s", s);
-    long long hsh[26][s.length() + 1] = {0};
+    cin >> s;
+    int size = s.length();
+    for (int i = 0; i < size; i++)
+    {
+        // cout << i << " ";
+        arr[s[i] - 'a'][1 + i]++;
+    }
     for (int i = 0; i < 26; i++)
     {
-        for (int j = 0; j < s.length() + 1; j++)
+        for (int j = 0; j <= size; j++)
         {
-            hsh[i][j] = 0;
-        }
-    }
-    for (int i = 0; i < s.length(); i++)
-    {
-        hsh[s[i] - 'a'][i + 1]++;
-    }
-
-    // finding prefix sum of hsh array
-    for (int i = 0; i < 26; i++)
-    {
-        for (int j = 1; j <= s.length(); j++)
-        {
-            hsh[i][j] += hsh[i][j - 1];
+            arr[i][j] += arr[i][j - 1];
         }
     }
     for (int i = 0; i < q; i++)
     {
-        long long int l, r;
+        int l, r;
         cin >> l >> r;
-        int count = 0;
+        int oddcnt = 0;
         for (int j = 0; j < 26; j++)
         {
-            long temp = hsh[j][r] - hsh[j][l - 1];
-            if (temp % 2 != 0)
-            {
-                count++;
-            }
+            if ((arr[j][r] - arr[j][l - 1]) % 2 != 0)
+                oddcnt++;
         }
-        if (count > 1)
-        {
+        if (oddcnt > 1)
             cout << "Impossible\n";
-        }
         else
-        {
             cout << "Possible\n";
-        }
     }
 }
