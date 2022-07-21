@@ -1,4 +1,4 @@
-// Note that this has time complezity of O(sqrt(N))
+// Note that this has time complexity of O(sqrt(N))
 // But for answering q queries this might be pretty slow
 // For that find all the prime factors: p1^n1, p2^n2, p3^n3, ...., pk^nk(say)
 // Count = (n1+1)(n2+1)(n3+1)...(nk+1)
